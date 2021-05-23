@@ -1,5 +1,20 @@
 plugins {
+    application
+    java
     scala
+}
+
+sourceSets {
+    main {
+        withConvention(ScalaSourceSet::class) {
+            scala {
+                setSrcDirs(listOf("src/main/scala", "src/main/java"))
+            }
+        }
+        java {
+            setSrcDirs(listOf("/none"))
+        }
+    }
 }
 
 repositories {
@@ -14,4 +29,10 @@ dependencies {
 tasks.withType<ScalaCompile> {
     sourceCompatibility = "1.8"
     targetCompatibility = "1.8"
+}
+
+
+application {
+    // Define the main class for the application
+    mainClassName = "it.unibo.u12lab.code.TicTacToeApp"
 }
