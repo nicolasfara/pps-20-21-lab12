@@ -1,4 +1,4 @@
-package u13lab.code;
+package it.unibo.u12lab.code;
 
 import javax.swing.*;
 import java.awt.*;
@@ -70,7 +70,7 @@ public class TicTacToeApp {
     public static void main(String[] args){
         try {
             // should probably adjust the folder down here
-            new TicTacToeApp(new TicTacToeImpl("src/main/scala/u13lab/code/ttt.pl"));
+            new TicTacToeApp(new TicTacToeImpl(TicTacToeImpl.class.getClassLoader().getResource("ttt.pl").getPath()));
         } catch (Exception e) {
             System.out.println("Problems loading the theory");
         }

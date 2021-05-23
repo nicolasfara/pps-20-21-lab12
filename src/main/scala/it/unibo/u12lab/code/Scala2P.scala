@@ -1,4 +1,4 @@
-package u13lab.code
+package it.unibo.u12lab.code
 
 import alice.tuprolog._
 
@@ -59,7 +59,7 @@ object TryScala2P extends App {
   engine(input) map (extractTerm(_,1)) take 100 foreach (println(_))
   // [1,2,3,4,..,20] ... [1,2,..,15,20,16,18,19,17]
 
-  val ttt = new TicTacToeImpl("src/u13lab/code/ttt.pl")
+  val ttt = new TicTacToeImpl(getClass.getClassLoader.getResource("ttt.pl").getPath)
   ttt.createBoard()
   println(ttt)
   ttt.setHumanCell(1,1)
