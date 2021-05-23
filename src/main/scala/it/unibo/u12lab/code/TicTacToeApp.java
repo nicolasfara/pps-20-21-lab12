@@ -70,7 +70,7 @@ public class TicTacToeApp {
     public static void main(String[] args){
         try {
             // should probably adjust the folder down here
-            new TicTacToeApp(new TicTacToeImpl(TicTacToeImpl.class.getClassLoader().getResource("ttt.pl").getPath()));
+            new TicTacToeApp(new TicTacToeImpl("/ttt.pl"));
         } catch (Exception e) {
             System.out.println("Problems loading the theory");
         }

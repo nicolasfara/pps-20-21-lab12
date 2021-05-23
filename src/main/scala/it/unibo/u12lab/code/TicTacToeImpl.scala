@@ -11,7 +11,7 @@ import Scala2P._
   */
 class TicTacToeImpl(fileName: String) extends TicTacToe {
 
-  private val engine = mkPrologEngine(new Theory(new FileInputStream(fileName)))
+  private val engine = mkPrologEngine(new Theory(getClass.getResourceAsStream(fileName)))
   private var tboard: Term = null
   createBoard()
 
