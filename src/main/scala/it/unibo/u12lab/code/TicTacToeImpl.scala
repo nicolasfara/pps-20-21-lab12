@@ -15,7 +15,7 @@ class TicTacToeImpl(fileName: String) extends TicTacToe {
   private var tboard: Term = null
   createBoard()
 
-  override def createBoard() = {
+  override def createBoard(): Unit = {
     val goal = "retractall(board(_)),newboard(B),assert(board(B))"
     solveWithSuccess(engine,goal)
   }
@@ -42,12 +42,15 @@ class TicTacToeImpl(fileName: String) extends TicTacToe {
 
   override def setComputerCell(): Array[Int] = {
     // a solution which just seeks for the first freecell
-    val pos = (for {
+    /*val pos = (for {
       i <- 0 to 2
       j <- 0 to 2
       if (isAFreeCell(i, j))
       k = i*3+j+1
-    } yield k).head
+    } yield k).head*/
+    val goal = "board(B),response(B, 'O', X)"
+    val term = solveOneAndGetTerm(engine, goal, "X")
+    val pos = Integer.parseInt(term.toString)
     // change above, by calling predicate 'response'
     setCell(pos,"'O'")
     Array((pos-1)/3,(pos-1)%3)
@@ -55,5 +58,4 @@ class TicTacToeImpl(fileName: String) extends TicTacToe {
 
   override def toString: String =
     solveOneAndGetTerm(engine,"board(B)","B").toString
-
 }

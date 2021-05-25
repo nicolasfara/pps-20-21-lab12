@@ -68,5 +68,9 @@ object TryScala2P extends App {
   println(ttt)
   ttt.setComputerCell()
   println(ttt)
+  ttt.setHumanCell(2, 0)
+  println(ttt)
+  ttt.setComputerCell()
+  println(ttt)
   println(ttt.checkVictory())
 }
